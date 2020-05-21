@@ -1,0 +1,44 @@
+<resources>
+    <color name="colorPrimary">#212121</color>
+    <color name="colorPrimaryVariant">#000000</color>
+    <color name="colorOnPrimary">#FFFFFF</color>
+    <color name="colorSecondary">#2962FF</color>
+    <color name="colorSecondaryVariant">#0039CB</color>
+    <color name="colorOnSecondary">#FFFFFF</color>
+    <color name="colorError">#F44336</color>
+    <color name="colorOnError">#FFFFFF</color>
+    <color name="colorSurface">#FFFFFF</color>
+    <color name="colorOnSurface">#212121</color>
+    <color name="colorOnBackground">#212121</color>
+    <color name="background">#FAFAFA</color>
+
+    <color name="ic_launcher_background">#00000000</color>
+
+    <color name="stark_primary">#414141</color>
+    <color name="stark_accent">#C3C3C1</color>
+    <color name="stark_dark">#272727</color>
+
+    <color name="lannister_primary">#880016</color>
+    <color name="lannister_dark">#52000D</color>
+    <color name="lannister_accent">#CCAA84</color>
+
+    <color name="targaryen_primary">#202020</color>
+    <color name="targaryen_dark">#000000</color>
+    <color name="targaryen_accent">#AC2E1F</color>
+
+    <color name="greyjoy_primary">#242424</color>
+    <color name="greyjoy_dark">#101010</color>
+    <color name="greyjoy_accent">#CCAA84</color>
+
+    <color name="baratheon_primary">#DFAD16</color>
+    <color name="baratheon_dark">#D78D06</color>
+    <color name="baratheon_accent">#000000</color>
+
+    <color name="martel_primary">#C15828</color>
+    <color name="martel_dark">#AD3E23</color>
+    <color name="martel_accent">#951D1E</color>
+
+    <color name="tyrel_primary">#6C9843</color>
+    <color name="tyrel_dark">#44651A</color>
+    <color name="tyrel_accent">#C9AE39</color>
+</resources>

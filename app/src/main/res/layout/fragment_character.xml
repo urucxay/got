@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".character.CharacterFragment"
+    tools:theme="@style/AppTheme">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsing_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:contentScrim="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:toolbarId="@+id/toolbar">
+
+            <ImageView
+                android:id="@+id/iv_house_cover"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:fitsSystemWindows="true"
+                android:scaleType="centerCrop"
+                app:layout_collapseMode="parallax" />
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <TextView
+            android:id="@+id/tv_words_title"
+            style="@style/Character.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:drawableStart="@drawable/ic_icon_decor"
+            android:drawableTint="@color/colorOnBackground"
+            android:text="@string/words"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_words"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_words_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_words_title"
+            app:layout_constraintTop_toTopOf="@+id/tv_words_title"
+            tools:text="There is cold" />
+
+        <TextView
+            android:id="@+id/tv_born_title"
+            style="@style/Character.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:drawableStart="@drawable/ic_icon_decor"
+            android:drawableTint="@color/colorOnBackground"
+            android:text="@string/born"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_words" />
+
+        <TextView
+            android:id="@+id/tv_born"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_born_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tv_words"
+            app:layout_constraintTop_toTopOf="@+id/tv_born_title"
+            tools:text="In 216 AC" />
+
+        <TextView
+            android:id="@+id/tv_titles_title"
+            style="@style/Character.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:drawableStart="@drawable/ic_icon_decor"
+            android:drawableTint="@color/colorOnBackground"
+            android:text="@string/titles"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_born" />
+
+        <TextView
+            android:id="@+id/tv_titles"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tv_words"
+            app:layout_constraintTop_toTopOf="@+id/tv_titles_title"
+            tools:text="King of yellow snow" />
+
+        <TextView
+            android:id="@+id/tv_aliases_title"
+            style="@style/Character.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:drawableStart="@drawable/ic_icon_decor"
+            android:drawableTint="@color/colorOnBackground"
+            android:text="@string/aliases"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_titles" />
+
+        <TextView
+            android:id="@+id/tv_aliases"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tv_words"
+            app:layout_constraintTop_toTopOf="@+id/tv_aliases_title"
+            tools:text="SnowMan" />
+
+        <TextView
+            android:id="@+id/tv_father"
+            style="@style/Character.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:drawableStart="@drawable/ic_icon_decor"
+            android:drawableTint="@color/colorOnBackground"
+            android:text="@string/father"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_aliases"
+            tools:visibility="gone" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_father"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:insetTop="8dp"
+            android:insetBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_father"
+            app:layout_constraintStart_toStartOf="@+id/tv_aliases"
+            app:layout_constraintTop_toTopOf="@+id/tv_father"
+            android:visibility="gone"
+            tools:text="I'm father!" />
+
+        <TextView
+            android:id="@+id/tv_mother"
+            style="@style/Character.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:drawableStart="@drawable/ic_icon_decor"
+            android:drawableTint="@color/colorOnBackground"
+            android:text="@string/mother"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_father"
+            tools:visibility="visible" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_mother"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:insetTop="8dp"
+            android:insetBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_mother"
+            app:layout_constraintStart_toStartOf="@+id/btn_father"
+            app:layout_constraintTop_toTopOf="@+id/tv_mother"
+            android:visibility="gone"
+            tools:text="I'm mother!"
+            tools:visibility="visible"/>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

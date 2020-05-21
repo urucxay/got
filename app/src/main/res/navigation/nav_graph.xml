@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/houseFragment">
+
+    <fragment
+        android:id="@+id/houseFragment"
+        android:name="ru.skillbranch.gameofthrones.house.page.PageFragment"
+        tools:layout="@layout/fragment_page" >
+        <action
+            android:id="@+id/action_houseFragment_to_characterFragment"
+            app:destination="@id/characterFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/characterFragment"
+        android:name="ru.skillbranch.gameofthrones.character.CharacterFragment"
+        android:label="KAPEC"
+        tools:layout="@layout/fragment_character">
+        <action
+            android:id="@+id/action_characterFragment_self"
+            app:destination="@id/characterFragment" />
+        <argument
+            android:name="id"
+            app:argType="string" />
+    </fragment>
+</navigation>
