@@ -22,12 +22,13 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var navController: NavController
-    private val viewModel by viewModels<MainViewModel> { defaultViewModelProviderFactory }
+    private val viewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        viewModel.checkData()
-        setTheme(R.style.AppTheme_NoActionBar)
+//        viewModel.checkData()
+
         super.onCreate(savedInstanceState)
+        setTheme(R.style.AppTheme_NoActionBar)
         setContentView(R.layout.activity_main)
         initViewModel()
         viewModel.checkData()
@@ -50,7 +51,7 @@ class MainActivity : AppCompatActivity() {
             Log.d("LOAD_DATA!!", "$status")
             when (status) {
                 LOADING -> {
-                    container.visibility = View.GONE
+//                    container.visibility = View.GONE
                 }
                 SUCCESS -> {
                     container.visibility = View.VISIBLE

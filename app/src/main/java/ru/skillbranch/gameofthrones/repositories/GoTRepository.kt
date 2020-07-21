@@ -73,5 +73,6 @@ object GoTRepository {
         return needHouses
     }
 
-    suspend fun isNeedUpdate() = dao.getCharacters().isNullOrEmpty() && dao.getHouses().isNullOrEmpty()
+//    suspend fun isNeedUpdate() = dao.getCharacters().isNullOrEmpty() && dao.getHouses().isNullOrEmpty()
+    suspend fun isNeedUpdate() = true
 }
