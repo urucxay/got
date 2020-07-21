@@ -12,9 +12,9 @@ import kotlinx.android.synthetic.main.character_list_item.*
 import ru.skillbranch.gameofthrones.R
 import ru.skillbranch.gameofthrones.data.local.entities.CharacterItem
 
-class HouseAdapter(
+class CharactersAdapter(
     private val listener: (CharacterItem) -> Unit
-) : ListAdapter<CharacterItem, HouseAdapter.ViewHolder>(DiffCallback) {
+) : ListAdapter<CharacterItem, CharactersAdapter.ViewHolder>(DiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -24,10 +24,7 @@ class HouseAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val character = getItem(position)
-        holder.itemView.setOnClickListener {
-            listener.invoke(character)
-        }
-        holder.bind(character)
+        holder.bind(character, listener)
     }
 
 
@@ -35,10 +32,11 @@ class HouseAdapter(
         override val containerView: View?
             get() = itemView
 
-        fun bind(character: CharacterItem) {
+        fun bind(character: CharacterItem, listener: (CharacterItem) -> Unit) {
             tv_character_name.text = character.name.ifEmpty { "Information is unknown" }
-            tv_character_title.text = character.titles.joinToString(" • ").ifEmpty { "Information is unknown" }
-            val avatar = when(character.house) {
+            tv_character_title.text =
+                character.titles.joinToString(" • ").ifEmpty { "Information is unknown" }
+            val avatar = when (character.house) {
                 "Stark" -> R.drawable.stark_icon
                 "Lannister" -> R.drawable.lanister_icon
                 "Targaryen" -> R.drawable.targaryen_icon
@@ -51,11 +49,16 @@ class HouseAdapter(
             Glide.with(itemView.context)
                 .load(avatar)
                 .into(iv_character_avatar)
+
+            itemView.setOnClickListener { listener(character) }
         }
     }
 }
 
 object DiffCallback : DiffUtil.ItemCallback<CharacterItem>() {
-    override fun areItemsTheSame(oldItem: CharacterItem, newItem: CharacterItem): Boolean = oldItem.id  == newItem.id
-    override fun areContentsTheSame(oldItem: CharacterItem, newItem: CharacterItem): Boolean = oldItem == newItem
+    override fun areItemsTheSame(oldItem: CharacterItem, newItem: CharacterItem): Boolean =
+        oldItem.id == newItem.id
+
+    override fun areContentsTheSame(oldItem: CharacterItem, newItem: CharacterItem): Boolean =
+        oldItem == newItem
 }
