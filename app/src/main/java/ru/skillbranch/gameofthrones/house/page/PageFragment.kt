@@ -20,7 +20,7 @@ class PageFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setHasOptionsMenu(true)
+
         initToolbar()
 
         pageAdapter = HousePageAdapter(childFragmentManager)
@@ -28,10 +28,10 @@ class PageFragment : Fragment() {
         tl_houses.setupWithViewPager(vp_houses)
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.search_menu, menu)
-    }
+//    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+//        super.onCreateOptionsMenu(menu, inflater)
+//        inflater.inflate(R.menu.search_menu, menu)
+//    }
 
     private fun initToolbar() {
         (activity as MainActivity).registerToolbar(toolbar)

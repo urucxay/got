@@ -1,9 +1,9 @@
 package ru.skillbranch.gameofthrones.house
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.util.Log
+import android.view.*
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -17,7 +17,7 @@ import ru.skillbranch.gameofthrones.utils.EventObserver
 
 class HouseFragment(private val house: String) : Fragment() {
 
-    private lateinit var adapter: HouseAdapter
+    private lateinit var adapter: CharactersAdapter
     private lateinit var layoutManager: LinearLayoutManager
     private val viewModel: HouseViewModel by viewModels { HouseViewModelFactory(house) }
 
@@ -30,14 +30,61 @@ class HouseFragment(private val house: String) : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setHasOptionsMenu(true)
         initToolbar()
         initRecyclerView()
         initViewModel()
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.search_menu, menu)
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu) {
+        super.onPrepareOptionsMenu(menu)
+        val menuItem = menu.findItem(R.id.action_search)
+        val searchView = menuItem.actionView as SearchView
+
+//        if (binding.isSearch) {
+//            menuItem.expandActionView()
+//            searchView.setQuery(binding.searchQuery, false)
+//            if (binding.isFocusedSearch) searchView.requestFocus()
+//            else searchView.clearFocus()
+//        }
+
+        menuItem.setOnActionExpandListener(object : MenuItem.OnActionExpandListener {
+            override fun onMenuItemActionExpand(item: MenuItem?): Boolean {
+//                viewModel.handleSearchMode(true)
+                return true
+            }
+
+            override fun onMenuItemActionCollapse(item: MenuItem?): Boolean {
+//                viewModel.handleSearchMode(true)
+                return true
+            }
+        })
+
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                viewModel.handleSearch(query)
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                viewModel.handleSearch(newText)
+                return true
+            }
+        })
+
+        searchView.setOnCloseListener {
+//            viewModel.handleSearchMode(false)
+            true
+        }
+    }
 
     private fun initRecyclerView() {
-        adapter = HouseAdapter {
+        adapter = CharactersAdapter {
             viewModel.openCharacter(it.id)
         }
         layoutManager = LinearLayoutManager(context)
@@ -52,7 +99,10 @@ class HouseFragment(private val house: String) : Fragment() {
     }
 
     private fun initViewModel() {
-        viewModel.members.observe(viewLifecycleOwner, Observer { adapter.submitList(it) })
+        viewModel.getMembers().observe(viewLifecycleOwner, Observer {
+            Log.d("TEST_SEARCH", "list -> $it")
+            adapter.submitList(it)
+        })
         viewModel.openCharacterEvent.observe(viewLifecycleOwner,
             EventObserver { openCharacter(it) })
     }
